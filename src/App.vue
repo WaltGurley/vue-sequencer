@@ -1,15 +1,15 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <h1>A Step Sequencer</h1>
+  <Sequencer/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Sequencer from './components/Sequencer.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Sequencer
   }
 }
 </script>
@@ -19,8 +19,9 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 </style>
