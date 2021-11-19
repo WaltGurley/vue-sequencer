@@ -2,15 +2,16 @@
     <button
         class="trigger-btn"
         :class="{ triggered: triggerOn }"
-        @click="toggleTrigger"
-    >{{ triggerInfo.instrument }}: {{ triggerInfo.step }} </button>
+        @mousedown="toggleTrigger"
+    ></button>
 </template>
 
 <script>
 export default {
     name: 'Trigger',
     props: {
-        triggerInfo: Object
+        triggerInfo: Object,
+        clearAllTriggers: Boolean
     },
     data() {
         return {
@@ -18,11 +19,18 @@ export default {
         }
     },
     emits: ['triggerState'],
+    watch: {
+        clearAllTriggers(shouldClear) {
+            console.log('in trigger')
+            if (shouldClear) {
+                this.triggerOn = false
+            }
+        }
+    },
     methods: {
         toggleTrigger() {
             this.triggerOn = !this.triggerOn
             this.$emit("triggerState", this.triggerOn, this.triggerInfo)
-            // console.log(this.triggerInfo)
         }
     }
 }
